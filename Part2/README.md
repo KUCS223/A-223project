@@ -40,7 +40,7 @@ server or clinet
 * WCfun.c: C file that include all function that use it for wildcard
 * sample:  Directory that use it for test the project
 
-* NetworkCli.c: C file that have Network code for Server and Clinet 
+* Networks.c: C file that have Network code for Server and Clinet 
 * stats.c: C file that count of send it byte, clinet accept connection,how many file Download and send the byte of downloaded file
 * retrieves.c: C file that send files from server that clinet would to download it also send flag the tell clinet is download it file
 * rewt.c: C file that do short write and short write and use it clinet and server 
