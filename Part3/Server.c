@@ -128,9 +128,6 @@ void encrypt(char *original, char *encrypted,int size){
 		encrypted[i]=original[i]+5;
 	
 	}
-
-
-
 }
 void send_reply(int fd, char *a,int size){
 	
@@ -147,14 +144,17 @@ void send_reply(int fd, char *a,int size){
 int ClinetConnection=0;
 void receive_cmd(int connfd,char *a){
 	
+	char *f;
+	f=(char*)malloc(sizeof(char)*1024);	
+        char *file;
+        file=(char*)malloc(sizeof(char)*1024);
+	char *command;
+        command=(char*)malloc(sizeof(char)*1024);
 	
-	char f[1024];
-        int i=0;
+	int i=0;
         int s=0;
-        char file[1024];
         int r=0;
         int l=0;
-        char command[1024];
 
 	for(int i=0; i<1024; i++){
                 file[i]='\0';
@@ -229,11 +229,13 @@ void receive_cmd(int connfd,char *a){
 		printf("Resevied command does not found....\n");
    			
 	      }
+	 free(command);
+         free(file);
+         free(f);
 }
 
 int main(int argc, char **argv){
 
-    char string[200];
     int listenfd, connfd;
     socklen_t clientlen;
     struct sockaddr_storage clientaddr;  
@@ -244,7 +246,7 @@ int main(int argc, char **argv){
             perror("Faild of Caugh Signale\n");
 
     }
-    if(argc != 2){
+    if(argc!=2){
 	      exit(1);
     }
     listenfd = open_listenfd(argv[1]);
