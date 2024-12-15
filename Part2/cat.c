@@ -37,7 +37,6 @@ void PrintintFile(int connfd,char *a){
         WriteExit(connfd,1);
 }
 
-
 //The function do short read then send it to clinet
 void Read(int connfd,char *a,int fd,int ssize){
 	
@@ -69,7 +68,6 @@ void Read(int connfd,char *a,int fd,int ssize){
 	  free(buf);
 	
 }
-
 //This cat function is an read a file if there is a wildcard or not 
 void ReadingFile(int connfd,char *a){
 
@@ -86,9 +84,6 @@ void ReadingFile(int connfd,char *a){
 	WriteExit(connfd,1);
 
 }
-
-
-
 
 void cat(char *a,int connfd){
 
@@ -193,7 +188,7 @@ void cat(char *a,int connfd){
                 }
 
 		//If file not exist the and send to clinet with print a massage
-                  if(check != 1){
+                if(check != 1){
              		send_reply(connfd,"No such file or directory\n",26);
                         Send+=26;
 			WriteExit(connfd,0);
@@ -219,7 +214,6 @@ void cat(char *a,int connfd){
 		int ga=size(a)-1;
                 int mm=0;
                 int o=0;
-
 
                 //This for loop check if middle wildcard mach the middle charecters of string than print file or directory
                 for(int i=0; i<t; i++){
@@ -295,8 +289,6 @@ void cat(char *a,int connfd){
                 int mm=0;
                 int rr=0;
 		struct stat fileS;
-               	
-
 		//For goes entire file in array and check if is equal of the file using size
                 for(int i=0; i<t; i++){
                         e=u[i];
@@ -339,8 +331,7 @@ void cat(char *a,int connfd){
 					   }
 	
                                 	}
-                	        }
-                       
+                	        }      
                 	}
 			mm=0;
 		}
@@ -361,8 +352,6 @@ void cat(char *a,int connfd){
                             WriteExit(connfd,0);
 		
 		}
-	
-
 	//This code run if there is no wildcard and print a wriiten file  
 	}else{
 	
@@ -403,7 +392,7 @@ void cat(char *a,int connfd){
 
                 			printf("Failed of close file\n");
         				send_reply(connfd,"Failed of close file\n",21);
-                                	 Send+=21;
+                                	Send+=21;
 					WriteExit(connfd,0);
 				}
 			}else{
@@ -429,5 +418,4 @@ void cat(char *a,int connfd){
 	       }
 	}
 		
-
 }

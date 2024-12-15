@@ -11,8 +11,8 @@
 #include <netdb.h>
 #include <signal.h>
 #include <sys/stat.h>
-
 #define MAXLINE 1024
+
 int *ServerFd=0;
 int *ClinetFd=0;
 
@@ -133,14 +133,20 @@ int ClinetConnection=0;
 void receive_cmd(int connfd,char *a){
 	
 	
-	char f[1024];
+	char *f;
+	f=(char*)malloc(sizeof(char)*1024);
         int i=0;
         int s=0;
-        char file[1024];
-        int r=0;
-        int l=0;
-        char command[1024];
+        char *file;
 
+	file=(char*)malloc(sizeof(char)*1024);
+        
+	int r=0;
+        int l=0;
+        
+	char *command;
+	command=(char*)malloc(sizeof(char)*1024);
+	
 	for(int i=0; i<1024; i++){
                 file[i]='\0';
 		f[i]='\0';
@@ -214,11 +220,14 @@ void receive_cmd(int connfd,char *a){
 		printf("Resevied command does not found....\n");
    			
 	      }
+	 free(command);
+	 free(file);
+	 free(f);
 }
 
 int main(int argc, char **argv){
 
-    char string[200];
+   
     int listenfd, connfd;
     socklen_t clientlen;
     struct sockaddr_storage clientaddr;  
