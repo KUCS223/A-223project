@@ -1,0 +1,4 @@
+hello world are you ready fr that aaaaaaa
+ gcc ls.o exit.o rewtS.o stats.o  WCfun.o retrieves.o cat.o help.o NetworkSer.o Server.o -o program
+        gt.c  Clinet.o -o client
+
